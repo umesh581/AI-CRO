@@ -1,0 +1,13 @@
+{
+  "name": "ai-cro",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:dashboard": "npm --workspace apps/dashboard run dev",
+    "dev:landing": "npm --workspace apps/landing run dev",
+    "lint": "npm -ws run lint",
+    "build": "npm -ws run build"
+  }
+}
