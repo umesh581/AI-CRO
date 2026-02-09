@@ -14,6 +14,12 @@ const landingContent = {
   primaryCta: "Book a Strategy Call",
   secondaryCta: "See How It Works",
   trustLine: "Generated 100+ Crores for business",
+  quickWinsTitle: "What changes in 14 days",
+  quickWins: [
+    "AI lead follow-ups in minutes",
+    "Daily content engine without burnout",
+    "Offer positioning that converts"
+  ],
   problemsTitle: "Your growth is stuck because your systems are manual.",
   problems: [
     "Sales follow-ups are slow and inconsistent",
@@ -32,6 +38,13 @@ const landingContent = {
   ],
   proofTitle: "Proven results, real growth.",
   proofCopy: "Generated 100+ Crores for business through CRO and AI-driven marketing systems.",
+  testimonialTitle: "What clients say",
+  testimonial: {
+    quote:
+      "We finally have a repeatable system. Leads follow up automatically, and our team ships faster every week.",
+    name: "Srikar R.",
+    role: "Agency Owner"
+  },
   howTitle: "How it works",
   steps: [
     {
@@ -45,6 +58,21 @@ const landingContent = {
     {
       title: "Execution & Optimization",
       body: "Launch and iterate for measurable growth."
+    }
+  ],
+  faqTitle: "FAQs",
+  faqs: [
+    {
+      q: "Who is this for?",
+      a: "Coaches, consultants, agency owners, and marketers who want faster growth with AI systems."
+    },
+    {
+      q: "How fast can I see results?",
+      a: "Most clients see clear momentum within the first 2-4 weeks."
+    },
+    {
+      q: "Do I need a big team?",
+      a: "No. The systems are designed to help small teams scale without extra headcount."
     }
   ],
   finalTitle: "Ready to scale with AI?",
@@ -135,7 +163,7 @@ export default function LandingPage() {
         </button>
       </header>
 
-      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-start justify-center gap-10 px-6 py-10 md:flex-row md:items-center">
+      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-start justify-center gap-10 px-6 py-6 md:flex-row md:items-center">
         <div className="flex w-full flex-1 flex-col gap-6">
           <div className="inline-flex w-fit items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.2em] text-slate-200">
             {landingContent.badge}
@@ -164,6 +192,14 @@ export default function LandingPage() {
           <p className="text-sm uppercase tracking-[0.3em] text-slate-400">
             {landingContent.trustLine}
           </p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {landingContent.quickWins.map((item) => (
+              <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-400">14-day win</p>
+                <p className="mt-2 text-sm text-slate-100">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="flex w-full flex-1 flex-col items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-8">
           <p className="text-xs uppercase tracking-[0.3em] text-slate-400">AI Growth Snapshot</p>
@@ -182,6 +218,11 @@ export default function LandingPage() {
               <span className="text-white">Weekly tests</span>
             </div>
           </div>
+          {hasBooked ? (
+            <div className="w-full rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+              Booking confirmed — check your email for next steps.
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -231,6 +272,18 @@ export default function LandingPage() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-12">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <p className="text-sm uppercase tracking-[0.3em] text-slate-400">{landingContent.testimonialTitle}</p>
+          <blockquote className="mt-4 text-lg font-semibold text-white">
+            “{landingContent.testimonial.quote}”
+          </blockquote>
+          <p className="mt-3 text-sm text-slate-300">
+            {landingContent.testimonial.name} — {landingContent.testimonial.role}
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-12">
         <h2 className="text-2xl font-semibold text-white md:text-3xl">
           {landingContent.howTitle}
         </h2>
@@ -240,6 +293,18 @@ export default function LandingPage() {
               <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Step {index + 1}</div>
               <h3 className="mt-3 text-lg font-semibold text-white">{step.title}</h3>
               <p className="mt-2 text-sm text-slate-300">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-12">
+        <h2 className="text-2xl font-semibold text-white md:text-3xl">{landingContent.faqTitle}</h2>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          {landingContent.faqs.map((item) => (
+            <div key={item.q} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p className="text-sm font-semibold text-white">{item.q}</p>
+              <p className="mt-2 text-sm text-slate-300">{item.a}</p>
             </div>
           ))}
         </div>
@@ -256,11 +321,6 @@ export default function LandingPage() {
           >
             {landingContent.primaryCta}
           </button>
-          {hasBooked ? (
-            <p className="mt-4 text-xs uppercase tracking-[0.3em] text-emerald-200">
-              Booking confirmed — check your email for next steps.
-            </p>
-          ) : null}
         </div>
       </section>
     </main>
